@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider, useCart } from './context/CartContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -9,15 +10,16 @@ import SpecialCollections from './components/SpecialCollections';
 import CartDrawer from './components/CartDrawer';
 import ProductModal from './components/ProductModal';
 import CheckoutModal from './components/CheckoutModal';
+import Admin from './components/Admin';
+import Craftsmanship from './components/Craftsmanship';
 import { Analytics } from '@vercel/analytics/react';
 import './App.css';
 
-const AppContent: React.FC = () => {
+const Home: React.FC = () => {
   const { isCheckoutOpen, setIsCheckoutOpen } = useCart();
   
   return (
-    <div className="app">
-      <Analytics />
+    <>
       <Navbar />
       <CartDrawer />
       <ProductModal />
@@ -27,6 +29,7 @@ const AppContent: React.FC = () => {
         <div id="home">
           <Hero />
         </div>
+        <Craftsmanship />
         <div id="featured">
           <FeaturedProducts />
         </div>
@@ -38,7 +41,7 @@ const AppContent: React.FC = () => {
           <SpecialCollections />
         </div>
       </main>
-      
+
       <footer id="contact" className="section-padding" style={{ backgroundColor: '#1a1a1a', color: '#fff' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '4rem', marginBottom: '4rem' }}>
@@ -49,15 +52,6 @@ const AppContent: React.FC = () => {
               </p>
             </div>
             <div>
-              <h4 style={{ marginBottom: '1.5rem', color: '#fff' }}>Quick Links</h4>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', opacity: 0.6, fontSize: '0.9rem' }}>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#shop">Shop</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </div>
-            <div>
               <h4 style={{ marginBottom: '1.5rem', color: '#fff' }}>Project Info</h4>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', opacity: 0.6, fontSize: '0.9rem' }}>
                 <li><a href="https://github.com/Rudraptl16/Furniqlo-Store" target="_blank" rel="noreferrer">GitHub Repository</a></li>
@@ -65,12 +59,12 @@ const AppContent: React.FC = () => {
               </ul>
             </div>
             <div>
-              <h4 style={{ marginBottom: '1.5rem', color: '#fff' }}>Socials</h4>
+              <h4 style={{ marginBottom: '1.5rem', color: '#fff' }}>Quick Links</h4>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', opacity: 0.6, fontSize: '0.9rem' }}>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Pinterest</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
               </ul>
             </div>
             <div>
@@ -89,15 +83,21 @@ const AppContent: React.FC = () => {
           </div>
         </div>
       </footer>
-    </div>
+    </>
   );
 };
 
 const App: React.FC = () => {
   return (
-    <CartProvider>
-      <AppContent />
-    </CartProvider>
+    <Router>
+      <CartProvider>
+        <Analytics />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
+      </CartProvider>
+    </Router>
   );
 };
 

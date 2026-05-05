@@ -67,9 +67,15 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  display: flex;
+  display: none; /* Hide by default on desktop */
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex; /* Show only on mobile */
+  }
 }
 
 /* Hero Section */
@@ -196,6 +202,16 @@
 .product-card:hover .product-image {
   transform: scale(1.05);
 }
+
+.cart-btn:hover {
+  transform: scale(1.1);
+}
+
+.dropdown-opt-hover:hover {
+  background: #f8f8f8 !important;
+  color: var(--accent) !important;
+}
+
 
 .product-info h3 {
   font-size: 1.4rem;

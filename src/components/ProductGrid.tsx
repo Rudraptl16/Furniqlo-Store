@@ -24,7 +24,7 @@ const allProducts = [
 ];
 
 const ProductGrid: React.FC = () => {
-  const { addToCart, setSelectedProduct, searchQuery, isInWishlist, addToWishlist, removeFromWishlist } = useCart();
+  const { addToCart, setSelectedProduct, searchQuery, isInWishlist, addToWishlist, removeFromWishlist, currency, exchangeRate } = useCart();
   const [filter, setFilter] = useState('All');
   const [visibleCount, setVisibleCount] = useState(8);
 
@@ -45,6 +45,11 @@ const ProductGrid: React.FC = () => {
   });
 
   const visibleProducts = filteredProducts.slice(0, visibleCount);
+
+  const formatPrice = (price: number) => {
+    const symbol = currency === 'USD' ? '$' : currency === 'EUR' ? '€' : '₹';
+    return `${symbol}${(price * exchangeRate).toFixed(0)}`;
+  };
 
   return (
     <section className="section-padding" id="shop">
@@ -150,7 +155,7 @@ const ProductGrid: React.FC = () => {
                     <h4 style={{ fontSize: '1.1rem', margin: '0' }}>{product.name}</h4>
                     <p className="product-meta">{product.brand}</p>
                   </div>
-                  <span style={{ fontWeight: '600' }}>${product.price}</span>
+                  <span style={{ fontWeight: '600' }}>{formatPrice(product.price)}</span>
                 </div>
               </motion.div>
             ))}

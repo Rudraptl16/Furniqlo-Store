@@ -28,9 +28,14 @@ interface CartContextType {
   setSelectedProduct: (product: any | null) => void;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
+  currency: 'USD' | 'EUR' | 'INR';
+  setCurrency: (curr: 'USD' | 'EUR' | 'INR') => void;
+  exchangeRate: number;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
+
+const RATES = { USD: 1, EUR: 0.92, INR: 83 };
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -42,6 +47,9 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [currency, setCurrency] = useState<'USD' | 'EUR' | 'INR'>('USD');
+
+  const exchangeRate = RATES[currency];
 
   useEffect(() => {
     localStorage.setItem('wishlist', JSON.stringify(wishlist));
@@ -97,7 +105,8 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       totalItems, totalPrice, isCartOpen, setIsCartOpen,
       isCheckoutOpen, setIsCheckoutOpen,
       selectedProduct, setSelectedProduct,
-      searchQuery, setSearchQuery
+      searchQuery, setSearchQuery,
+      currency, setCurrency, exchangeRate
     }}>
       {children}
     </CartContext.Provider>

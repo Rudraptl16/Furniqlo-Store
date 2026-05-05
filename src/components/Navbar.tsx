@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Search } from 'lucide-react';
+import { Menu, Search, ShoppingCart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useTranslation } from 'react-i18next';
 import MobileMenu from './MobileMenu';
+import Dropdown from './Dropdown';
 
 const Navbar: React.FC = () => {
+  const { i18n } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const { totalItems, setIsCartOpen, searchQuery, setSearchQuery } = useCart();
+  const { totalItems, setIsCartOpen, searchQuery, setSearchQuery, currency, setCurrency } = useCart();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,8 +99,46 @@ const Navbar: React.FC = () => {
           </ul>
 
           <div className="nav-actions">
-            <button className="cart-btn" onClick={() => setIsCartOpen(true)}>
-              Cart ({totalItems})
+            <select 
+              value={i18n.language} 
+              onChange={(e) => changeLanguage(e.target.value)}
+              style={{ background: 'none', border: 'none', fontSize: '0.8rem', opacity: 0.6 }}
+            >
+              <option value="en">EN</option>
+              <option value="hi">HI</option>
+            </select>
+
+            <select 
+              value={currency} 
+              onChange={(e) => setCurrency(e.target.value as any)}
+              style={{ background: 'none', border: 'none', fontSize: '0.8rem', opacity: 0.6 }}
+            >
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="INR">INR</option>
+            </select>
+
+            <button className="cart-btn" onClick={() => setIsCartOpen(true)} style={{ position: 'relative', background: 'none', border: 'none', cursor: 'pointer' }}>
+              <ShoppingCart size={22} />
+              {totalItems > 0 && (
+                <span style={{ 
+                  position: 'absolute', 
+                  top: '-8px', 
+                  right: '-10px', 
+                  background: 'var(--accent)', 
+                  color: '#fff', 
+                  fontSize: '0.7rem', 
+                  width: '18px', 
+                  height: '18px', 
+                  borderRadius: '50%', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  fontWeight: '700'
+                }}>
+                  {totalItems}
+                </span>
+              )}
             </button>
             <button className="menu-toggle" onClick={() => setMobileMenuOpen(true)}>
               <Menu size={20} />
