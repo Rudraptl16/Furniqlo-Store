@@ -1,1 +1,0 @@
-Furniqlo is a premium furniture store landing page built with React, TypeScript, and Vanilla CSS. It features a stunning hero section, smooth parallax effects, and a dynamic product grid with category filtering. Users can enjoy a seamless shopping experience with a functional cart sidebar, quick-view modals, and a multi-step checkout.

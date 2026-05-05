@@ -9,6 +9,7 @@ import SpecialCollections from './components/SpecialCollections';
 import CartDrawer from './components/CartDrawer';
 import ProductModal from './components/ProductModal';
 import CheckoutModal from './components/CheckoutModal';
+import { Analytics } from '@vercel/analytics/react';
 import './App.css';
 
 const AppContent: React.FC = () => {
@@ -16,6 +17,7 @@ const AppContent: React.FC = () => {
   
   return (
     <div className="app">
+      <Analytics />
       <Navbar />
       <CartDrawer />
       <ProductModal />
@@ -53,6 +55,13 @@ const AppContent: React.FC = () => {
                 <li><a href="#shop">Shop</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 style={{ marginBottom: '1.5rem', color: '#fff' }}>Project Info</h4>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', opacity: 0.6, fontSize: '0.9rem' }}>
+                <li><a href="https://github.com/Rudraptl16/Furniqlo-Store" target="_blank" rel="noreferrer">GitHub Repository</a></li>
+                <li><a href="https://git-scm.com/" target="_blank" rel="noreferrer">Git Version Control</a></li>
               </ul>
             </div>
             <div>

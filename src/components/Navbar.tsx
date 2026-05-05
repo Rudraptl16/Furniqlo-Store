@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      
+
       // Simple section tracking
       const sections = ['home', 'shop', 'reviews', 'about'];
       for (const section of sections) {
@@ -43,27 +43,27 @@ const Navbar: React.FC = () => {
           <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>
             Furniqlo
           </div>
-          
+
           <ul className="nav-links">
             {navItems.map((item) => (
               <li key={item.id}>
-                <a 
-                  href={`#${item.id}`} 
+                <a
+                  href={`#${item.id}`}
                   className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-                  style={{ 
+                  style={{
                     position: 'relative',
-                    color: activeSection === item.id ? 'var(--accent)' : 'inherit' 
+                    color: activeSection === item.id ? 'var(--accent)' : 'inherit'
                   }}
                 >
                   {item.label}
                   {activeSection === item.id && (
-                    <span style={{ 
-                      position: 'absolute', 
-                      bottom: '-5px', 
-                      left: '0', 
-                      width: '100%', 
-                      height: '2px', 
-                      background: 'var(--accent)' 
+                    <span style={{
+                      position: 'absolute',
+                      bottom: '-5px',
+                      left: '0',
+                      width: '100%',
+                      height: '2px',
+                      background: 'var(--accent)'
                     }} />
                   )}
                 </a>
