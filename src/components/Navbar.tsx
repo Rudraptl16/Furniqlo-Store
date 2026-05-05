@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu } from 'lucide-react';
+import { Menu, Search } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import MobileMenu from './MobileMenu';
 
@@ -7,7 +7,7 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const { totalItems, setIsCartOpen } = useCart();
+  const { totalItems, setIsCartOpen, searchQuery, setSearchQuery } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,6 +42,26 @@ const Navbar: React.FC = () => {
         <div className="container nav-container">
           <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>
             Furniqlo
+          </div>
+
+          <div className="search-wrapper" style={{ flex: 1, maxWidth: '300px', margin: '0 2rem', position: 'relative' }}>
+            <Search size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', opacity: 0.4 }} />
+            <input 
+              type="text" 
+              placeholder="Search furniture..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{
+                width: '100%',
+                padding: '0.6rem 1rem 0.6rem 2.8rem',
+                borderRadius: '50px',
+                border: '1px solid #eee',
+                background: scrolled ? '#f8f8f8' : '#fff',
+                fontSize: '0.9rem',
+                outline: 'none',
+                transition: 'all 0.3s'
+              }}
+            />
           </div>
 
           <ul className="nav-links">

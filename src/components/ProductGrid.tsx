@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../context/CartContext';
-import { Plus, ChevronDown, Filter } from 'lucide-react';
+import { Plus, ChevronDown, Filter, Heart } from 'lucide-react';
 import chairImg from '../assets/armchair_aura_1777995490497.png';
 import bedImg from '../assets/tranquil_bedframe_1777993009387.png';
 import sofaImg from '../assets/serenity_sofa_1777992962262.png';
@@ -24,13 +24,25 @@ const allProducts = [
 ];
 
 const ProductGrid: React.FC = () => {
-  const { addToCart, setSelectedProduct } = useCart();
+  const { addToCart, setSelectedProduct, searchQuery, isInWishlist, addToWishlist, removeFromWishlist } = useCart();
   const [filter, setFilter] = useState('All');
   const [visibleCount, setVisibleCount] = useState(8);
 
-  const filteredProducts = allProducts.filter(p => 
-    filter === 'All' ? true : p.category === filter
-  );
+  const toggleWishlist = (e: React.MouseEvent, product: any) => {
+    e.stopPropagation();
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
+  };
+
+  const filteredProducts = allProducts.filter(p => {
+    const matchesFilter = filter === 'All' ? true : p.category === filter;
+    const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                         p.category.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesFilter && matchesSearch;
+  });
 
   const visibleProducts = filteredProducts.slice(0, visibleCount);
 
@@ -84,6 +96,30 @@ const ProductGrid: React.FC = () => {
               >
                 <div className="product-image-wrapper" style={{ position: 'relative' }}>
                   <img src={product.image} alt={product.name} className="product-image" />
+                  
+                  <motion.button 
+                    className="wishlist-btn"
+                    onClick={(e) => toggleWishlist(e, product)}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    style={{
+                      position: 'absolute',
+                      right: '1rem',
+                      top: '1rem',
+                      background: '#fff',
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                      color: isInWishlist(product.id) ? '#ff4d4d' : 'inherit'
+                    }}
+                  >
+                    <Heart size={18} fill={isInWishlist(product.id) ? '#ff4d4d' : 'none'} />
+                  </motion.button>
+
                   <motion.button 
                     className="add-to-cart-quick"
                     onClick={(e) => {

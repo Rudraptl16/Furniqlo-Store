@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, type ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 
 interface CartItem {
   id: number;
@@ -10,10 +10,14 @@ interface CartItem {
 
 interface CartContextType {
   cart: CartItem[];
+  wishlist: any[];
   addToCart: (item: any) => void;
   removeFromCart: (id: number) => void;
   updateQuantity: (id: number, delta: number) => void;
   clearCart: () => void;
+  addToWishlist: (item: any) => void;
+  removeFromWishlist: (id: number) => void;
+  isInWishlist: (id: number) => boolean;
   totalItems: number;
   totalPrice: number;
   isCartOpen: boolean;
@@ -22,15 +26,39 @@ interface CartContextType {
   setIsCheckoutOpen: (open: boolean) => void;
   selectedProduct: any | null;
   setSelectedProduct: (product: any | null) => void;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [wishlist, setWishlist] = useState<any[]>(() => {
+    const saved = localStorage.getItem('wishlist');
+    return saved ? JSON.parse(saved) : [];
+  });
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  }, [wishlist]);
+
+  const addToWishlist = (product: any) => {
+    setWishlist((prev) => {
+      if (prev.find((item) => item.id === product.id)) return prev;
+      return [...prev, product];
+    });
+  };
+
+  const removeFromWishlist = (id: number) => {
+    setWishlist((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const isInWishlist = (id: number) => wishlist.some((item) => item.id === id);
 
   const addToCart = (product: any) => {
     setCart((prev) => {
@@ -65,9 +93,11 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   return (
     <CartContext.Provider value={{ 
       cart, addToCart, removeFromCart, updateQuantity, clearCart,
+      wishlist, addToWishlist, removeFromWishlist, isInWishlist,
       totalItems, totalPrice, isCartOpen, setIsCartOpen,
       isCheckoutOpen, setIsCheckoutOpen,
-      selectedProduct, setSelectedProduct 
+      selectedProduct, setSelectedProduct,
+      searchQuery, setSearchQuery
     }}>
       {children}
     </CartContext.Provider>
