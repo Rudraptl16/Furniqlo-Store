@@ -2,15 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useCart } from '../context/CartContext';
 import MagneticButton from './MagneticButton';
-import sofaImg from '../assets/serenity_sofa_1777992962262.png';
-import chairImg from '../assets/parsons_chair_1777992987210.png';
-import bedImg from '../assets/tranquil_bedframe_1777993009387.png';
+import { products } from '../data/products';
 
-const products = [
-  { id: 1, name: 'Serenity Sofa', brand: 'Manufacture Hatil', price: 1200, image: sofaImg },
-  { id: 2, name: 'Parsons Chair - 4', brand: 'Manufacture Regal', price: 450, image: chairImg },
-  { id: 3, name: 'Tranquil Bedframe', brand: 'Manufacture Lxona', price: 850, image: bedImg }
-];
+const featuredProducts = products.slice(0, 3);
+
 
 const FeaturedProducts: React.FC = () => {
   const { addToCart, setSelectedProduct } = useCart();
@@ -19,7 +14,7 @@ const FeaturedProducts: React.FC = () => {
     <section className="section-padding" id="featured">
       <div className="container">
         <div className="featured-grid">
-          {products.map((product, index) => (
+          {featuredProducts.map((product, index) => (
             <motion.div 
               key={product.id}
               className="product-card"

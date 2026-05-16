@@ -12,6 +12,11 @@ import ProductModal from './components/ProductModal';
 import CheckoutModal from './components/CheckoutModal';
 import Admin from './components/Admin';
 import Craftsmanship from './components/Craftsmanship';
+import BrandStory from './components/BrandStory';
+import Features from './components/Features';
+import Newsletter from './components/Newsletter';
+import CategoryShowcase from './components/CategoryShowcase';
+import CustomCursor from './components/CustomCursor';
 import { Analytics } from '@vercel/analytics/react';
 import './App.css';
 
@@ -29,14 +34,18 @@ const Home: React.FC = () => {
         <div id="home">
           <Hero />
         </div>
-        <Craftsmanship />
+        <Features />
         <div id="featured">
           <FeaturedProducts />
         </div>
+        <BrandStory />
+        <Craftsmanship />
         <PromoSection />
+        <CategoryShowcase />
         <div id="shop">
           <ProductGrid />
         </div>
+        <Newsletter />
         <div id="about">
           <SpecialCollections />
         </div>
@@ -90,6 +99,7 @@ const Home: React.FC = () => {
 const App: React.FC = () => {
   return (
     <Router>
+      <CustomCursor />
       <CartProvider>
         <Analytics />
         <Routes>

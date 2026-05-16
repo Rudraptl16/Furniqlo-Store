@@ -30,18 +30,21 @@ const Dropdown: React.FC<DropdownProps> = ({ value, options, onChange, style }) 
       <button 
         onClick={() => setIsOpen(!isOpen)}
         style={{
-          background: 'rgba(0, 0, 0, 0.03)',
+          background: 'rgba(255, 255, 255, 0.05)',
+          backdropFilter: 'blur(10px)',
           border: '1px solid rgba(0, 0, 0, 0.05)',
           padding: '0.6rem 1.2rem',
           borderRadius: '50px',
-          fontSize: '0.8rem',
+          fontSize: '0.75rem',
           fontWeight: '700',
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
           gap: '0.5rem',
           color: 'var(--text-dark)',
-          transition: 'all 0.3s'
+          transition: 'var(--transition)',
+          textTransform: 'uppercase',
+          letterSpacing: '1px'
         }}
       >
         {selectedOption?.label}
@@ -59,16 +62,17 @@ const Dropdown: React.FC<DropdownProps> = ({ value, options, onChange, style }) 
               top: '100%',
               left: '50%',
               transform: 'translateX(-50%)',
-              background: '#fff',
-              borderRadius: '12px',
+              background: 'rgba(255, 255, 255, 0.8)',
+              backdropFilter: 'blur(20px)',
+              borderRadius: '16px',
               padding: '0.5rem',
-              boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
+              boxShadow: '0 20px 50px rgba(0,0,0,0.1)',
               zIndex: 100,
-              minWidth: '100px',
+              minWidth: '120px',
               display: 'flex',
               flexDirection: 'column',
-              gap: '2px',
-              border: '1px solid #eee'
+              gap: '4px',
+              border: '1px solid rgba(255, 255, 255, 0.5)'
             }}
           >
             {options.map(opt => (
