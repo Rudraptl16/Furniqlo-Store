@@ -54,7 +54,7 @@ const Admin: React.FC = () => {
 
       <div style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-          <thead style={{ background: '#f8f8f8' }}>
+          <thead style={{ background: '#ffffffff' }}>
             <tr>
               <th style={thStyle}>Product Name</th>
               <th style={thStyle}>Category</th>
