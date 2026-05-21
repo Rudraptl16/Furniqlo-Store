@@ -2,17 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Search, ShoppingCart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useTranslation } from 'react-i18next';
-import Dropdown from './Dropdown';
 
 const Navbar: React.FC = () => {
-  const { i18n } = useTranslation();
+  useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const { totalItems, setIsCartOpen, searchQuery, setSearchQuery, currency, setCurrency } = useCart();
-
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
+  const { totalItems, setIsCartOpen, searchQuery, setSearchQuery } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {

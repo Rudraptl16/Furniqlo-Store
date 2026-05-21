@@ -7,6 +7,7 @@ export interface Product {
   description: string;
   features: string[];
   specs: { [key: string]: string };
+  brand?: string;
 }
 
 export const products: Product[] = [

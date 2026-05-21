@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowRight, Star, Leaf, Award } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  const { t } = useTranslation();
+  useTranslation();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
