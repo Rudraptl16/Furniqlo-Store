@@ -7,7 +7,7 @@
   --text-light: #555555;
   --bg-hero: #dce7ee;
   --bg-cream: #f9f7f2;
-  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg: rgba(255, 255, 255, 0.8);
   --glass-border: rgba(255, 255, 255, 0.4);
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Outfit', sans-serif;
@@ -18,6 +18,40 @@
   --shadow-glass: 0 10px 40px rgba(0,0,0,0.05);
   --radius-xl: 32px;
   --radius-lg: 20px;
+
+  /* Theme Tokens */
+  --bg-main: #ffffff;
+  --bg-sec: #fbfbfb;
+  --bg-tri: #f4f4f4;
+  --text-main: #1a1a1a;
+  --text-muted: #555555;
+  --border-color: rgba(0, 0, 0, 0.06);
+  --card-bg: #ffffff;
+}
+
+body.dark {
+  --primary: #ffffff;
+  --secondary: #1a1a1a;
+  --accent: #e6c8a8;
+  --accent-light: #d4a373;
+  --text-dark: #f3f3f3;
+  --text-light: #a0a0a0;
+  --bg-hero: #1c2327;
+  --bg-cream: #121212;
+  --glass-bg: rgba(20, 20, 20, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --gradient-dark: linear-gradient(135deg, #262626 0%, #121212 100%);
+  --shadow-premium: 0 30px 60px rgba(0,0,0,0.4);
+  --shadow-glass: 0 10px 40px rgba(0,0,0,0.3);
+
+  /* Theme Tokens */
+  --bg-main: #121212;
+  --bg-sec: #181818;
+  --bg-tri: #222222;
+  --text-main: #f3f3f3;
+  --text-muted: #a0a0a0;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --card-bg: #1e1e1e;
 }
 
 * {
@@ -28,10 +62,11 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--white);
-  color: var(--text-dark);
+  background-color: var(--bg-main);
+  color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 h1, h2, h3, h4 {

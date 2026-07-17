@@ -45,7 +45,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                   transition={{ delay: 0.1 * i }}
                 >
                   <a 
-                    href="#" 
+                    href={`#${item.toLowerCase()}`} 
                     onClick={onClose}
                     style={{ fontSize: '3rem', fontFamily: 'var(--font-serif)', fontWeight: '600' }}
                   >

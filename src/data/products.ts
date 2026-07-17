@@ -8,9 +8,13 @@ export interface Product {
   features: string[];
   specs: { [key: string]: string };
   brand?: string;
+  rating?: number;
+  reviews?: number;
+  badge?: string;
 }
 
 export const products: Product[] = [
+  // ─── Original 12 ──────────────────────────────────────────────
   {
     id: 1,
     name: "Aurelius Oak Sideboard",
@@ -19,7 +23,11 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=1000",
     description: "A masterpiece of mid-century design, handcrafted from sustainably sourced white oak with artisanal joinery.",
     features: ["Soft-close drawers", "Adjustable shelving", "Hand-rubbed oil finish"],
-    specs: { "Material": "Solid Oak", "Dimensions": "72\"W x 18\"D x 30\"H", "Weight": "120 lbs" }
+    specs: { "Material": "Solid Oak", "Dimensions": "72\"W x 18\"D x 30\"H", "Weight": "120 lbs" },
+    brand: "Furniqlo Studio",
+    rating: 4.9,
+    reviews: 142,
+    badge: "Best Seller",
   },
   {
     id: 2,
@@ -29,7 +37,10 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1000",
     description: "Experience weightless comfort with our modular cloud sofa, upholstered in premium performance linen.",
     features: ["Modular design", "Stain-resistant fabric", "Down-wrapped cushions"],
-    specs: { "Material": "Linen Blend", "Dimensions": "110\"W x 40\"D x 32\"H", "Weight": "250 lbs" }
+    specs: { "Material": "Linen Blend", "Dimensions": "110\"W x 40\"D x 32\"H", "Weight": "250 lbs" },
+    brand: "Cloud Living Co.",
+    rating: 4.8,
+    reviews: 98,
   },
   {
     id: 3,
@@ -39,7 +50,10 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=1000",
     description: "A sculptural centerpiece featuring tempered glass and a precision-engineered steel base.",
     features: ["Tempered safety glass", "Architectural base", "Easy maintenance"],
-    specs: { "Material": "Glass & Steel", "Dimensions": "42\" Diameter x 16\"H", "Weight": "85 lbs" }
+    specs: { "Material": "Glass & Steel", "Dimensions": "42\" Diameter x 16\"H", "Weight": "85 lbs" },
+    brand: "Zenith Interiors",
+    rating: 4.7,
+    reviews: 63,
   },
   {
     id: 4,
@@ -49,7 +63,11 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&q=80&w=1000",
     description: "Full-grain Italian leather that develops a beautiful patina over time, set on solid walnut legs.",
     features: ["Top-grain leather", "Walnut frame", "Ergonomic support"],
-    specs: { "Material": "Walnut & Leather", "Dimensions": "32\"W x 34\"D x 36\"H", "Weight": "60 lbs" }
+    specs: { "Material": "Walnut & Leather", "Dimensions": "32\"W x 34\"D x 36\"H", "Weight": "60 lbs" },
+    brand: "Heritage Craft Co.",
+    rating: 4.9,
+    reviews: 211,
+    badge: "Award Winner",
   },
   {
     id: 5,
@@ -59,7 +77,10 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1507473885765-e6ed657f992a?auto=format&fit=crop&q=80&w=1000",
     description: "An elegant arc of brushed brass providing warm, atmospheric lighting for any contemporary living space.",
     features: ["Adjustable brightness", "Marble base", "LED integrated"],
-    specs: { "Material": "Brass & Marble", "Dimensions": "18\"W x 72\"H", "Weight": "35 lbs" }
+    specs: { "Material": "Brass & Marble", "Dimensions": "18\"W x 72\"H", "Weight": "35 lbs" },
+    brand: "Lumière Atelier",
+    rating: 4.6,
+    reviews: 47,
   },
   {
     id: 6,
@@ -69,7 +90,11 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1617806118233-18e16737a798?auto=format&fit=crop&q=80&w=1000",
     description: "A grand dining table with matching benches, celebrating the raw beauty of live-edge walnut.",
     features: ["Live-edge finish", "Seats 8 comfortably", "Custom iron legs"],
-    specs: { "Material": "Live Edge Walnut", "Dimensions": "96\"W x 40\"D x 30\"H", "Weight": "300 lbs" }
+    specs: { "Material": "Live Edge Walnut", "Dimensions": "96\"W x 40\"D x 30\"H", "Weight": "300 lbs" },
+    brand: "Boreal Workshop",
+    rating: 5.0,
+    reviews: 34,
+    badge: "Limited Edition",
   },
   {
     id: 7,
@@ -79,7 +104,10 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&q=80&w=1000",
     description: "Clean lines and functional storage make this nightstand a perfect companion for minimalist bedrooms.",
     features: ["Push-to-open drawer", "Compact footprint", "Sustainable materials"],
-    specs: { "Material": "Birch Plywood", "Dimensions": "18\"W x 16\"D x 24\"H", "Weight": "25 lbs" }
+    specs: { "Material": "Birch Plywood", "Dimensions": "18\"W x 16\"D x 24\"H", "Weight": "25 lbs" },
+    brand: "Nordic Form",
+    rating: 4.5,
+    reviews: 88,
   },
   {
     id: 8,
@@ -89,7 +117,10 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1505797149-35ebcb05a6fd?auto=format&fit=crop&q=80&w=1000",
     description: "Plush velvet upholstery combined with ergonomic adjustments for a stylish and productive workspace.",
     features: ["Height adjustable", "360-degree swivel", "Memory foam seat"],
-    specs: { "Material": "Velvet & Chrome", "Dimensions": "26\"W x 26\"D x 38-42\"H", "Weight": "45 lbs" }
+    specs: { "Material": "Velvet & Chrome", "Dimensions": "26\"W x 26\"D x 38-42\"H", "Weight": "45 lbs" },
+    brand: "Workspace Luxe",
+    rating: 4.7,
+    reviews: 122,
   },
   {
     id: 9,
@@ -99,7 +130,10 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&q=80&w=1000",
     description: "Solid Carrara marble top with a pedestal base in matte black steel.",
     features: ["Natural marble veining", "Seats 6", "Stain-resistant sealant"],
-    specs: { "Material": "Carrara Marble", "Dimensions": "72\"W x 36\"D x 30\"H", "Weight": "280 lbs" }
+    specs: { "Material": "Carrara Marble", "Dimensions": "72\"W x 36\"D x 30\"H", "Weight": "280 lbs" },
+    brand: "Opal Stone Co.",
+    rating: 4.8,
+    reviews: 55,
   },
   {
     id: 10,
@@ -109,7 +143,10 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=1000",
     description: "Classic tufted design in deep emerald velvet, perfect as a footrest or extra seating.",
     features: ["Deep button tufting", "Hardwood frame", "High-density foam"],
-    specs: { "Material": "Velvet & Birch", "Dimensions": "24\"W x 24\"D x 18\"H", "Weight": "15 lbs" }
+    specs: { "Material": "Velvet & Birch", "Dimensions": "24\"W x 24\"D x 18\"H", "Weight": "15 lbs" },
+    brand: "Velvet Era",
+    rating: 4.4,
+    reviews: 76,
   },
   {
     id: 11,
@@ -119,7 +156,10 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&q=80&w=1000",
     description: "An open-frame bookshelf that creates a visual play of light and shadow.",
     features: ["Powder-coated steel", "Modular shelves", "Wall-mount hardware included"],
-    specs: { "Material": "Steel", "Dimensions": "48\"W x 12\"D x 72\"H", "Weight": "70 lbs" }
+    specs: { "Material": "Steel", "Dimensions": "48\"W x 12\"D x 72\"H", "Weight": "70 lbs" },
+    brand: "Grid Space",
+    rating: 4.6,
+    reviews: 41,
   },
   {
     id: 12,
@@ -129,6 +169,147 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1534073828943-f801091bb18c?auto=format&fit=crop&q=80&w=1000",
     description: "Hand-thrown ceramic base with a linen drum shade, each piece is unique.",
     features: ["Hand-thrown ceramic", "Linen shade", "Warm ambient glow"],
-    specs: { "Material": "Ceramic & Linen", "Dimensions": "12\"W x 22\"H", "Weight": "8 lbs" }
-  }
+    specs: { "Material": "Ceramic & Linen", "Dimensions": "12\"W x 22\"H", "Weight": "8 lbs" },
+    brand: "Clay & Light Studio",
+    rating: 4.8,
+    reviews: 93,
+    badge: "Handmade",
+  },
+
+  // ─── New 10 Products ──────────────────────────────────────────
+  {
+    id: 13,
+    name: "Rattan Accent Chair",
+    price: 520,
+    category: "Vintage",
+    image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&q=80&w=1000",
+    description: "Handwoven rattan with a plush boucle cushion — the perfect blend of boho warmth and refined comfort.",
+    features: ["Natural rattan weave", "Removable cushion cover", "Eco-friendly materials"],
+    specs: { "Material": "Rattan & Boucle", "Dimensions": "28\"W x 30\"D x 35\"H", "Weight": "22 lbs" },
+    brand: "Wicker & Bloom",
+    rating: 4.7,
+    reviews: 68,
+    badge: "New Arrival",
+  },
+  {
+    id: 14,
+    name: "Industrial Pipe Bookshelf",
+    price: 490,
+    category: "Modern",
+    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1200",
+    description: "Reclaimed pine shelves on a raw iron pipe frame — rugged industrial aesthetic meets functional storage.",
+    features: ["Reclaimed pine boards", "Adjustable shelf heights", "Pipe-frame assembly"],
+    specs: { "Material": "Pine & Iron", "Dimensions": "48\"W x 10\"D x 68\"H", "Weight": "55 lbs" },
+    brand: "Iron & Pine Co.",
+    rating: 4.5,
+    reviews: 39,
+  },
+  {
+    id: 15,
+    name: "Japandi Low Profile Bed",
+    price: 1480,
+    category: "Minimalist",
+    image: "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=1000",
+    description: "A floor-hugging platform bed in light ash wood — inspired by the calm minimalism of Japandi design.",
+    features: ["Platform base", "Slat support system", "No box spring needed"],
+    specs: { "Material": "Ash Wood", "Dimensions": "Queen 62\"W x 84\"D x 12\"H", "Weight": "95 lbs" },
+    brand: "Wabi Studio",
+    rating: 4.9,
+    reviews: 184,
+    badge: "Best Seller",
+  },
+  {
+    id: 16,
+    name: "Brass & Cane Sideboard",
+    price: 1100,
+    category: "Vintage",
+    image: "https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&q=80&w=1000",
+    description: "Cane-front panels framed in brushed brass create an art-deco statement piece for any dining space.",
+    features: ["Cane front doors", "Brushed brass hardware", "Hidden cable management"],
+    specs: { "Material": "MDF & Cane", "Dimensions": "60\"W x 16\"D x 32\"H", "Weight": "80 lbs" },
+    brand: "Deco Atelier",
+    rating: 4.6,
+    reviews: 52,
+  },
+  {
+    id: 17,
+    name: "Travertine Side Table",
+    price: 620,
+    category: "Modern",
+    image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&q=80&w=1000",
+    description: "Solid travertine stone top on a slender brass rod base — naturally porous, endlessly elegant.",
+    features: ["Natural travertine top", "Brass rod legs", "Unique stone grain per piece"],
+    specs: { "Material": "Travertine & Brass", "Dimensions": "18\" Diameter x 22\"H", "Weight": "30 lbs" },
+    brand: "Stone & Form",
+    rating: 4.7,
+    reviews: 29,
+    badge: "New Arrival",
+  },
+  {
+    id: 18,
+    name: "Curved Boucle Loveseat",
+    price: 1780,
+    category: "Modern",
+    image: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=1000",
+    description: "The gentle S-curve silhouette of this boucle loveseat makes it a sculptural focal point for any room.",
+    features: ["Boucle upholstery", "Curved sculptural frame", "High-resilience foam"],
+    specs: { "Material": "Boucle & Beechwood", "Dimensions": "58\"W x 32\"D x 30\"H", "Weight": "70 lbs" },
+    brand: "Curve Studio",
+    rating: 4.8,
+    reviews: 77,
+  },
+  {
+    id: 19,
+    name: "Solid Walnut Writing Desk",
+    price: 940,
+    category: "Artisanal",
+    image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&q=80&w=1000",
+    description: "A sleek single-drawer writing desk in solid American black walnut, built to last generations.",
+    features: ["Solid walnut top", "Dovetail joint drawer", "Felt-lined interior"],
+    specs: { "Material": "American Black Walnut", "Dimensions": "55\"W x 24\"D x 30\"H", "Weight": "75 lbs" },
+    brand: "Furniqlo Studio",
+    rating: 4.9,
+    reviews: 101,
+    badge: "Craftsman Pick",
+  },
+  {
+    id: 20,
+    name: "Hanging Rattan Pendant",
+    price: 220,
+    category: "Artisanal",
+    image: "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?auto=format&fit=crop&q=80&w=1000",
+    description: "Intricately woven rattan pendant that casts beautiful dappled light patterns on surrounding walls.",
+    features: ["Hand-woven rattan", "E26 bulb compatible", "3m adjustable cord"],
+    specs: { "Material": "Natural Rattan", "Dimensions": "18\" Diameter x 16\"H", "Weight": "3 lbs" },
+    brand: "Clay & Light Studio",
+    rating: 4.6,
+    reviews: 115,
+  },
+  {
+    id: 21,
+    name: "Slim Oak Console Table",
+    price: 560,
+    category: "Minimalist",
+    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&q=80&w=1000",
+    description: "Ultra-slim profile in white-oiled oak — the perfect entryway piece that doesn't overwhelm a space.",
+    features: ["White-oiled finish", "Hidden shelf", "Slim 10\" depth"],
+    specs: { "Material": "White Oak", "Dimensions": "48\"W x 10\"D x 33\"H", "Weight": "32 lbs" },
+    brand: "Nordic Form",
+    rating: 4.5,
+    reviews: 60,
+  },
+  {
+    id: 22,
+    name: "Chesterfield Sofa",
+    price: 2950,
+    category: "Vintage",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=1000",
+    description: "The iconic Chesterfield silhouette reborn in rich oxblood leather with deep button tufting and rolled arms.",
+    features: ["Full-grain leather", "Deep button tufting", "Kiln-dried hardwood frame"],
+    specs: { "Material": "Top-Grain Leather", "Dimensions": "84\"W x 38\"D x 32\"H", "Weight": "190 lbs" },
+    brand: "Heritage Craft Co.",
+    rating: 5.0,
+    reviews: 48,
+    badge: "Iconic",
+  },
 ];

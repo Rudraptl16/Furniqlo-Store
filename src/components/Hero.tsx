@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section className="hero-editorial" ref={ref} style={{ minHeight: '120vh', background: '#fff', position: 'relative', overflow: 'hidden', paddingTop: '100px' }}>
+    <section className="hero-editorial" ref={ref} style={{ minHeight: '120vh', background: 'var(--bg-main)', color: 'var(--text-main)', position: 'relative', overflow: 'hidden', paddingTop: '100px', transition: 'background-color 0.5s ease' }}>
       <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
         
         {/* Left Column: Content */}
@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
           </motion.div>
 
           <motion.h1 
-            style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: '0.95', marginBottom: '2.5rem', fontFamily: 'var(--font-serif)', color: '#1a1a1a' }}
+            style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: '0.95', marginBottom: '2.5rem', fontFamily: 'var(--font-serif)', color: 'var(--text-main)' }}
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
           </motion.h1>
           
           <motion.p 
-            style={{ fontSize: '1.2rem', marginBottom: '3.5rem', maxWidth: '480px', lineHeight: '1.8', color: '#555' }}
+            style={{ fontSize: '1.2rem', marginBottom: '3.5rem', maxWidth: '480px', lineHeight: '1.8', color: 'var(--text-muted)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
@@ -73,13 +73,13 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            <button className="btn-primary" style={{ padding: '1.4rem 3.5rem', fontSize: '1rem', borderRadius: '50px', background: '#1a1a1a', color: '#fff', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <button className="btn-primary" style={{ padding: '1.4rem 3.5rem', fontSize: '1rem', borderRadius: '50px', background: 'var(--primary)', color: 'var(--bg-main)', display: 'flex', alignItems: 'center', gap: '1rem', cursor: 'pointer' }}>
               Explore Now <ArrowRight size={18} />
             </button>
             
             <div style={{ display: 'flex', gap: '-10px' }}>
               {[1,2,3].map(i => (
-                <div key={i} style={{ width: '40px', height: '40px', borderRadius: '50%', border: '2px solid #fff', background: '#eee', overflow: 'hidden' }}>
+                <div key={i} style={{ width: '40px', height: '40px', borderRadius: '50%', border: '2px solid var(--bg-main)', background: 'var(--bg-tri)', overflow: 'hidden' }}>
                   <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="User" />
                 </div>
               ))}
@@ -104,10 +104,11 @@ const Hero: React.FC = () => {
             style={{ 
               width: '100%', 
               aspectRatio: '4/5', 
-              background: '#f9f7f2', 
+              background: 'var(--bg-tri)', 
               borderRadius: '24px', 
               overflow: 'hidden',
-              boxShadow: '0 40px 80px rgba(0,0,0,0.1)'
+              boxShadow: 'var(--shadow-premium)',
+              border: '1px solid var(--border-color)'
             }}
           >
             <img 
@@ -123,8 +124,9 @@ const Hero: React.FC = () => {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             style={{ 
               position: 'absolute', top: '10%', right: '-10%', 
-              background: '#fff', padding: '1.2rem', borderRadius: '20px', 
-              boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+              background: 'var(--bg-main)', color: 'var(--text-main)', padding: '1.2rem', borderRadius: '20px', 
+              boxShadow: 'var(--shadow-premium)',
+              border: '1px solid var(--border-color)',
               display: 'flex', alignItems: 'center', gap: '1rem',
               zIndex: 20
             }}
@@ -143,10 +145,10 @@ const Hero: React.FC = () => {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             style={{ 
               position: 'absolute', bottom: '15%', left: '-15%', 
-              background: '#1a1a1a', padding: '1.2rem', borderRadius: '20px', 
-              boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+              background: 'var(--primary)', padding: '1.2rem', borderRadius: '20px', 
+              boxShadow: 'var(--shadow-premium)',
               display: 'flex', alignItems: 'center', gap: '1rem',
-              color: '#fff',
+              color: 'var(--bg-main)',
               zIndex: 20
             }}
           >

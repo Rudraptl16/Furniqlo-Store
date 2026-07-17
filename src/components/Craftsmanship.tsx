@@ -4,9 +4,9 @@ import shelfImg from '../assets/wooden_bookshelf_1777999487629.png';
 
 const Craftsmanship: React.FC = () => {
   return (
-    <section className="section-padding" style={{ background: '#1a1a1a', color: '#fff', overflow: 'hidden' }}>
+    <section className="section-padding" style={{ background: 'var(--primary)', color: 'var(--bg-main)', overflow: 'hidden', transition: 'background-color 0.5s ease' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth > 768 ? '1fr 1fr' : '1fr', gap: '6rem', alignItems: 'center' }}>
+        <div className="craftsmanship-grid" style={{ gap: '6rem', alignItems: 'center' }}>
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}

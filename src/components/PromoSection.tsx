@@ -4,7 +4,7 @@ import bedPromoImg from '../assets/tranquil_bedframe_1777993009387.png'; // Reus
 
 const PromoSection: React.FC = () => {
   return (
-    <section className="section-padding" style={{ backgroundColor: '#fff' }}>
+    <section className="section-padding" style={{ backgroundColor: 'var(--bg-main)', color: 'var(--text-main)', transition: 'background-color 0.5s ease' }}>
       <div className="container">
         {/* Image 3 Banner Content */}
         <motion.div 
